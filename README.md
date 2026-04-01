@@ -85,21 +85,3 @@ backend/
 `-- README.md
 ```
 
-## Environment Setup
-
-Each service currently expects its own `.env` file:
-
-- `auth/.env`
-- `user/.env`
-- `gateway/.env`
-
-
-## Current Notes
-
-- `docker-compose.yml` currently defines the three application containers but not a PostgreSQL container.
-- Local `venv/`, `__pycache__/`, `.env`, and `volumes/` directories should be excluded from version control.
-- This backend currently focuses on account/auth foundations; gameplay booking and wallet features are partially designed at the schema level.
-
-## Resume-Oriented Summary
-
-Built a Dockerized FastAPI microservices backend with an API gateway, dedicated authentication and user services, PostgreSQL persistence, JWT-based authentication, refresh-token rotation, HTTP-only cookie session handling, and profile/reputation management for a badminton platform.
