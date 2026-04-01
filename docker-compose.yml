@@ -1,0 +1,45 @@
+services:
+  user-service:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    container_name: user-service
+    env_file:
+      - ./user/.env
+    ports:
+      - "8001:8000"   # Exposed to host only for testing
+    networks:
+      - badminton
+
+  auth-service:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    container_name: auth-service
+    env_file:
+      - ./auth/.env
+    ports:
+      - "8000:8000"   # Exposed to host only for testing
+    depends_on:
+      - user-service
+    networks:
+      - badminton
+
+  api-gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    env_file:
+      - ./gateway/.env
+    ports:
+      - "5000:8000"   # Expose gateway externally
+    depends_on:
+      - auth-service
+      - user-service
+    networks:
+      - badminton
+
+networks:
+  badminton:
+    driver: bridge
