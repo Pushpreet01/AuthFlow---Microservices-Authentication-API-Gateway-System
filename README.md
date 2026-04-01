@@ -93,42 +93,6 @@ Each service currently expects its own `.env` file:
 - `user/.env`
 - `gateway/.env`
 
-Do not commit real `.env` files. Replace them with `.env.example` files before publishing.
-
-Typical variables used in the project:
-
-```env
-DB_USER=postgres
-DB_PASSWORD=changeme
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=badminton
-
-JWT_SECRET=replace_me
-JWT_ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=15
-REFRESH_TOKEN_EXPIRE_DAYS=30
-
-USER_SERVICE_URL=http://user-service:8000/users
-AUTH_SERVICE_URL=http://auth-service:8000/auth
-```
-
-## Running Locally
-
-1. Create service `.env` files or `.env.example` files with local values.
-2. Make sure PostgreSQL is available and the target database exists.
-3. Apply the SQL in `db/migrations/init.sql`.
-4. Start the services:
-
-```bash
-docker compose up --build
-```
-
-5. Access the gateway at:
-
-```text
-http://localhost:5000
-```
 
 ## Current Notes
 
